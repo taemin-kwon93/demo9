@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Send {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         AmazonSQS sqs = AmazonSQSClientBuilder.standard().build();
 
         String queueUrl = "해당 부분에 SQS Url을 입력해주시면 됩니다.";
@@ -22,13 +22,13 @@ public class Send {
                 .withDataType("String"));
 
 
-        SendMessageRequest sendMessageRequestg = new SendMessageRequest()
+        SendMessageRequest sendMessageRequest = new SendMessageRequest()
                 .withQueueUrl(queueUrl)
                 .withMessageBody("Hello World")
                 .withMessageAttributes(messageAttributes)
                 .withDelaySeconds(5);
 
-        SendMessageResult result = sqs.sendMessage(sendMessageRequestg);
+        SendMessageResult result = sqs.sendMessage(sendMessageRequest);
         System.out.println(result.getMessageId());
     }
 }
